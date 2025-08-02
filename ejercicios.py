@@ -35,7 +35,7 @@ estudiante = Estudiantes(nombre,edad,n1,n2,n3)
 
 promedio_estudiante = estudiante.promedio()
 print("El promedio de", estudiante.nombre,"es", promedio_estudiante)
-"""
+
 #otra forma
 
 class Estudiantes:
@@ -89,8 +89,98 @@ while True:
         break
     else:
         print("Opcion no valida")
-    
+"""
+# Una tienda quiere llevar el control de los productos que vende. Por cada producto, necesita guardar el nombre, el precio y la cantidad disponible.
+# El sistema debe permitir vender cierta cantidad de productos y mostrar cuántas unidades quedan.
+# Si no hay suficientes unidades, debe mostrar un mensaje de advertencia.
+"""
+class productos:
+    def __init__(self, nombre, precio, disponibilidad):
+        self.nombre = nombre
+        self.precio = precio
+        self.disponibilidad = disponibilidad
 
+    def ventas(self):
+        disponibilidad_producto = self.disponibilidad - cantidad_a_comprar
+        return disponibilidad_producto
+    
+print("Añade productos")
+Lista_productos = []
+print("Ingrese el nombre del productos")
+nombre = input()
+print("Ingrese el precio del producto")
+precio = int(input())
+print("Ingrese la disponibilidad del producto")
+disponibilidad = int(input())
+producto = productos(nombre, precio, disponibilidad)
+Lista_productos.append(producto)
+
+while True:
+    print("\n menú")
+    print("1.Comprar")
+    print("2.Salir)")
+    opcion = input("Que desea hacer?")
+    if opcion == 1:
+        for producto in Lista_productos:
+            print("Nombre del producto: ",producto.nombre,"Precio: ",producto.precio, "Disponibilidad: ",producto.disponibilidad)
+
+cantidad_a_comprar = int(input("Ingrese la cantidad que desee comprar del producto: "))
+"""
+
+class Producto:
+    def __init__(self, nombre, precio, disponibilidad):
+        self.nombre = nombre
+        self.precio = precio
+        self.disponibilidad = disponibilidad
+
+    def vender(self, cantidad):
+        if cantidad <= self.disponibilidad:
+            self.disponibilidad -= cantidad
+            print(f" Compra exitosa. Quedan {self.disponibilidad} unidades de '{self.nombre}'.")
+        else:
+            print(f"No hay suficiente disponibilidad. Solo hay {self.disponibilidad} unidades.")
+
+# Crear lista de productos
+lista_productos = []
+
+while True:
+    print("\n Añade un producto")
+    nombre = input("Ingrese el nombre del producto: ")
+    precio = int(input("Ingrese el precio del producto: "))
+    disponibilidad = int(input("Ingrese la disponibilidad del producto: "))
+
+    producto = Producto(nombre, precio, disponibilidad)
+    lista_productos.append(producto)
+
+    opcion = input("¿Desea agregar más productos? (si/no): ").lower()
+    if opcion != "si":
+        break
+
+# Menú de opciones
+while True:
+    print("\n Menú")
+    print("1. Comprar")
+    print("2. Salir")
+    opcion = input("¿Qué desea hacer? ")
+
+    if opcion == "1":
+        print("\n Productos disponibles:")
+        contador = 0
+        for producto in lista_productos:
+            print(f"{contador + 1}. {producto.nombre} - Precio: {producto.precio} - Disponibilidad: {producto.disponibilidad}")
+            contador += 1
+
+        Producto_a_comprar = int(input("Ingrese el número del producto que desea comprar: "))
+        if 0 <= Producto_a_comprar < len(lista_productos):
+            cantidad = int(input("¿Cuántas unidades desea comprar? "))
+            lista_productos[Producto_a_comprar - 1].vender(cantidad)
+        else:
+            print("Producto no válido.")
+    elif opcion == "2":
+        print("Gracias por usar el sistema.")
+        break
+    else:
+        print(" Opción no válida.")
 
     
 
