@@ -93,40 +93,8 @@ while True:
 # Una tienda quiere llevar el control de los productos que vende. Por cada producto, necesita guardar el nombre, el precio y la cantidad disponible.
 # El sistema debe permitir vender cierta cantidad de productos y mostrar cuántas unidades quedan.
 # Si no hay suficientes unidades, debe mostrar un mensaje de advertencia.
+
 """
-class productos:
-    def __init__(self, nombre, precio, disponibilidad):
-        self.nombre = nombre
-        self.precio = precio
-        self.disponibilidad = disponibilidad
-
-    def ventas(self):
-        disponibilidad_producto = self.disponibilidad - cantidad_a_comprar
-        return disponibilidad_producto
-    
-print("Añade productos")
-Lista_productos = []
-print("Ingrese el nombre del productos")
-nombre = input()
-print("Ingrese el precio del producto")
-precio = int(input())
-print("Ingrese la disponibilidad del producto")
-disponibilidad = int(input())
-producto = productos(nombre, precio, disponibilidad)
-Lista_productos.append(producto)
-
-while True:
-    print("\n menú")
-    print("1.Comprar")
-    print("2.Salir)")
-    opcion = input("Que desea hacer?")
-    if opcion == 1:
-        for producto in Lista_productos:
-            print("Nombre del producto: ",producto.nombre,"Precio: ",producto.precio, "Disponibilidad: ",producto.disponibilidad)
-
-cantidad_a_comprar = int(input("Ingrese la cantidad que desee comprar del producto: "))
-"""
-
 class Producto:
     def __init__(self, nombre, precio, disponibilidad):
         self.nombre = nombre
@@ -140,7 +108,6 @@ class Producto:
         else:
             print(f"No hay suficiente disponibilidad. Solo hay {self.disponibilidad} unidades.")
 
-# Crear lista de productos
 lista_productos = []
 
 while True:
@@ -153,10 +120,13 @@ while True:
     lista_productos.append(producto)
 
     opcion = input("¿Desea agregar más productos? (si/no): ").lower()
-    if opcion != "si":
+    if opcion == "si":
+        print("Agregue el producto")
+    elif opcion == "no":    
         break
+    else:
+        print("Opcion no válida")
 
-# Menú de opciones
 while True:
     print("\n Menú")
     print("1. Comprar")
@@ -181,8 +151,85 @@ while True:
         break
     else:
         print(" Opción no válida.")
+"""
 
-    
+#Quieres simular un sistema bancario sencillo. Cada cliente debe poder tener un número de cuenta, un titular y un saldo. 
+# El sistema debe permitir depositar dinero, retirar dinero (si hay suficiente), y consultar el saldo.
+
+class clientes:
+    def __init__(self, numero, titular, saldo):
+        self.numero = numero
+        self.titular = titular 
+        self.saldo = saldo
+
+    def retiros(self, retiro):
+        if retiro <= self.saldo:
+            saldo -= retiro
+            print("Retiro exitoso")
+        else:
+            print("Saldo insuficiente")
+
+    def deposito_dinero(self, deposito):
+        if deposito <= self.saldo:
+            saldo -= deposito
+        
+Lista_titulares = []
+titulares_cantidad = int(input("Ingrese la cantidad de titulares que desea agregar"))
+for cantidad in range (0,titulares_cantidad):
+    print("\n Agrega personas: ")
+    numero = int(input("Ingrese el numero de la cuenta: "))
+    titular = input("Ingrese le nombre del titular: ") 
+    saldo = int(input("Ingrese el saldo: "))
+    titulares = clientes(numero, titular, saldo)
+    Lista_titulares.append(titulares)
+
+while True:
+    print("\nQue desea hacer?")
+    print("1.ingresar a mi cuenta")
+    print("2.Salir")
+    opcion=int(input("Que desea hacer?"))
+    if opcion == 1:
+        numero_cuenta = int(input("Ingrese su numero de cuenta"))
+        for nc in Lista_titulares:
+            if numero_cuenta == nc.numero:
+             while True:
+                print("\n MENÚ")
+                print("1.Depositar dinero")
+                print("2.Retirar dinero")
+                print("3.Ver saldo")
+                print("0.salir")
+                opcion = int(input("Elija la opcion: "))
+
+                if opcion == 2:
+                    retirar = int(input("Ingrese monto a retirar: "))
+                    for retiro in Lista_titulares:
+                        retiro.saldo -= retirar
+                elif opcion == 3:
+                    print(f"Su saldo es de: ", titulares.saldo,"$")
+                elif opcion == 1:
+                    valor_depositar = int(input("Ingrese el valor a depositar en tu cuenta"))
+                    for depo in Lista_titulares:
+                        depo.saldo += valor_depositar
+                    
+
+                elif opcion == 0:
+                    break
+                else:
+                    print("Ingrese opcion valida")
+    elif opcion == 2:
+        break
+    else:
+        print("Ingrese opcion valida")
+
+
+
+                
+                
+                
+
+
+            
+        
 
 
 
