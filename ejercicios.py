@@ -162,16 +162,18 @@ class clientes:
         self.titular = titular 
         self.saldo = saldo
 
-    def retiros(self, retiro):
-        if retiro <= self.saldo:
-            saldo -= retiro
-            print("Retiro exitoso")
-        else:
-            print("Saldo insuficiente")
+    def retiros(self, numero, retiro, lista):
+        for cuenta in lista:
+            if cuenta.numero == numero:
+                if retiro <= cuenta.saldo:
+                    cuenta.saldo = cuenta.saldo - retiro
+                    print("Retiro exitoso")
+                else:
+                    print("Saldo insuficiente")
 
     def deposito_dinero(self, deposito):
         if deposito <= self.saldo:
-            saldo -= deposito
+            self.saldo = self.saldo + deposito
         
 Lista_titulares = []
 titulares_cantidad = int(input("Ingrese la cantidad de titulares que desea agregar"))
@@ -202,14 +204,13 @@ while True:
 
                 if opcion == 2:
                     retirar = int(input("Ingrese monto a retirar: "))
-                    for retiro in Lista_titulares:
-                        retiro.saldo -= retirar
+                    titulares.retiros(numero_cuenta, retirar, Lista_titulares)
                 elif opcion == 3:
                     print(f"Su saldo es de: ", titulares.saldo,"$")
                 elif opcion == 1:
                     valor_depositar = int(input("Ingrese el valor a depositar en tu cuenta"))
-                    for depo in Lista_titulares:
-                        depo.saldo += valor_depositar
+                    titulares.deposito_dinero(valor_depositar)
+                    
                     
 
                 elif opcion == 0:
