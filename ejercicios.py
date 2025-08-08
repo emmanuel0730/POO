@@ -155,7 +155,7 @@ while True:
 
 #Quieres simular un sistema bancario sencillo. Cada cliente debe poder tener un número de cuenta, un titular y un saldo. 
 # El sistema debe permitir depositar dinero, retirar dinero (si hay suficiente), y consultar el saldo.
-
+"""
 class clientes:
     def __init__(self, numero, titular, saldo):
         self.numero = numero
@@ -211,8 +211,6 @@ while True:
                     valor_depositar = int(input("Ingrese el valor a depositar en tu cuenta"))
                     titulares.deposito_dinero(valor_depositar)
                     
-                    
-
                 elif opcion == 0:
                     break
                 else:
@@ -222,10 +220,110 @@ while True:
     else:
         print("Ingrese opcion valida")
 
+"""
+#Forma corregida
+
+class cliente:
+    def __init__(self , numero_cuenta, titular):
+        self.numero_cuenta = numero_cuenta
+        self.titular = titular
+        self.saldo = 0
 
 
-                
-                
+    def depositar(self, cantidad):
+        self.saldo += cantidad
+        return self.saldo
+    
+
+    def reirar(self, cantidad):
+        if self.saldo >= cantidad:
+            self.saldo -= cantidad
+            print("Retiro exitoso")
+            return self.saldo
+        else:
+            print("Saldo insuficiente")
+            return -1
+        
+
+    def consultar(self):
+        return self.saldo
+    
+
+
+lista_cuentas = []
+
+print("BIENVENIDO")
+while True:
+    print("\nQue desea hacer?")
+    print("1. Registrar cuenta")
+    print("2. Depsoitar")
+    print("3. Retirar")
+    print("4. Ver saldo")
+    print("0. Salir")
+
+    opcion = int(input())
+
+    if opcion == 1:
+        nombre = input("Ingrese el nombre del titular: ")
+        numero_cuenta = int(input("Ingrese el numero de la cuenta: "))
+        nueva_cuenta = cliente(nombre, numero_cuenta)
+        lista_cuentas.append(nueva_cuenta)
+        print("Cuenta agregada correctamente")
+
+
+    elif opcion == 2:
+        numero_cuenta = int(input("Ingrese el numero de la cuenta: "))
+        existe = False
+        for cuenta in lista_cuentas:
+           if cuenta.numero_cuenta == numero_cuenta:
+               existe = True
+               cantidad = float("Ingrese la cantidad a depositar: ")
+               nuevo_saldo = cuenta.depositar(cantidad)
+               print("El nuevo saldo es", nuevo_saldo)
+        if existe == False:
+            print("Cuenta inexistente")
+           
+
+    elif opcion == 3:
+        numero_cuenta = int(input("Ingrese el numero de la cuenta: "))
+        existe = False
+        for cuenta in lista_cuentas:
+           if cuenta.numero_cuenta == numero_cuenta:
+               existe = True
+               cantidad = float("Ingrese la cantidad a retirar: ")
+               nuevo_saldo = cuenta.retirarr(cantidad)
+               print("El nuevo saldo es", nuevo_saldo)
+
+               if nuevo_saldo >= 0:
+                   print("Retiro exitoso. Su nuevo saldo es", nuevo_saldo)
+        if existe == False:
+            print("Cuenta inexistente")
+
+    elif opcion == 4:
+        numero_cuenta = int(input("Ingrese el numero de la cuenta: "))
+        existe = False
+        for cuenta in lista_cuentas:
+           if cuenta.numero_cuenta == numero_cuenta:
+               existe = True
+               print("Su saldo es", cuenta.consultar())
+
+        if existe == False:
+            print("Cuenta inexistente")
+
+    elif opcion == 0:
+        print("Hasta luego")
+        break
+
+    else:
+        print("Ingrese opcion valida")
+
+
+            
+        
+
+
+            
+    
                 
 
 
