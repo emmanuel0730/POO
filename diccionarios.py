@@ -50,6 +50,7 @@ print(f"Mejor estudainte es:{mejor_estudiante}")
  
  '''
 
+"""
 inventario = {}
 
 while True:
@@ -84,5 +85,6 @@ while True:
     else:
         print("ingrese opcion valida")
         
-            
+ """
+
 
