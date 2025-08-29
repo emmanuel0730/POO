@@ -48,4 +48,4 @@ print("lso numeros para ", perosna1.nombre,"son", perosna1.lista_numeros)
 print("lso numeros para ", perosna2.nombre,"son", perosna2.lista_numeros)
         
 
-
+tupla =("hola",)
