@@ -117,12 +117,4 @@ while True:
         
 
  
-           
-"""flota1 = Flota("Autoland")
-C1 = carro("Mazda",123,"Sedan","disponible")
-C2 = carro("toyota",12,"Camioneta","no disponible")
-flota1.agregar_carro(C1)
-flota1.agregar_carro(C2)
-flota1.eliminar_carro(C2)
-
-flota1.mostrar_carros()"""
+ 
