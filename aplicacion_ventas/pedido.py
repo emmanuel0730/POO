@@ -23,5 +23,10 @@ class Factura:
     
 
     def calcular_total(self, descuento : Descuento, impuesto:Impuesto):
-        
-        return sum(l.subtotal for l in self.lineas) + self.calcular_impuesto(impuesto) - self.calcular_descuentos(descuento)
+
+        try:
+                
+            return sum(l.subtotal for l in self.lineas) + self.calcular_impuesto(impuesto) - self.calcular_descuentos(descuento)
+        except ValueError:
+            print("Valores de los prodcutos incorrectos")
+            return 0
